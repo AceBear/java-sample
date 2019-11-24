@@ -7,6 +7,8 @@ java的gradle模版
 + log4j2日志
 + junit4单元测试
 + git版本标记
++ spring-boot支持
++ travis-ci支持
 
 ## License
 MIT

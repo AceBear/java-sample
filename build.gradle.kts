@@ -3,7 +3,7 @@ version = "1.0.0"
 
 plugins {
     java
-    application
+    id("org.springframework.boot") version "2.2.1.RELEASE"
 }
 
 repositories {
@@ -16,17 +16,15 @@ repositories {
 }
 
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter:2.2.+"){
+        exclude("org.springframework.boot", "spring-boot-starter-logging")
+    }
     implementation("org.slf4j:slf4j-api:1.7.+")
     implementation("org.apache.logging.log4j:log4j-core:2.12.+")
     runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.12.+")
 
     // Use JUnit test framework
     testImplementation("junit:junit:4.12")
-}
-
-application {
-    // Define the main class for the application.
-    mainClassName = "$group.App"
 }
 
 tasks.create("markGitVersion"){
@@ -82,7 +80,7 @@ tasks.withType<JavaCompile>(){
     dependsOn("markGitVersion")
 }
 
-tasks.named<JavaExec>("run"){
+tasks.named<JavaExec>("bootRun"){
     systemProperties(System.getProperties().mapKeys { it.key as String })
 }
 
