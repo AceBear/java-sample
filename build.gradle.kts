@@ -17,6 +17,9 @@ repositories {
 }
 
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter:2.2.+"){
+        exclude("org.springframework.boot", "spring-boot-starter-logging")
+    }
     implementation("org.slf4j:slf4j-api:1.7.+")
     implementation("org.apache.logging.log4j:log4j-core:2.12.+")
     runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.12.+")

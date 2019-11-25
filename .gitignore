@@ -14,5 +14,6 @@ bin
 *.iml
 
 gradle.properties
+application-*.yml
 log4j2-*.xml
 GitVer.java

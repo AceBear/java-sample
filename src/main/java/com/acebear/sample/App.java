@@ -6,23 +6,35 @@ import org.slf4j.LoggerFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.config.Configuration;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-public class App {
+@SpringBootApplication
+public class App implements CommandLineRunner {
     private final static Logger s_logger = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) {
+        SpringApplication.run(App.class);
+    }
+
+    @Override
+    public void run(String... args) {
+        logBasicInfo();
+
+        int a = 3, b = 5;
+        s_logger.info("{} + {} = {}", a, b, sum(a, b));
+    }
+
+    public int sum(int a, int b){
+        return a+b;
+    }
+
+    private void logBasicInfo(){
         s_logger.info("appver: {}", GitVer.getVersion());
 
         final LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
         final Configuration config = ctx.getConfiguration();
         s_logger.info("Active log4j config file: {}", config.getName());
-
-        App app = new App();
-        int a = 3, b=5;
-        s_logger.info("{} + {} = {}", a, b, app.sum(a, b));
-    }
-
-    public int sum(int a, int b){
-        return a+b;
     }
 }
