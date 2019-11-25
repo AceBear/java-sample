@@ -4,6 +4,7 @@ version = "1.0.0"
 plugins {
     java
     application
+    id("org.javamodularity.moduleplugin") version "1.6.0"
 }
 
 repositories {
@@ -26,7 +27,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClassName = "$group.App"
+    mainClassName = "$group/$group.App"
 }
 
 tasks.create("markGitVersion"){

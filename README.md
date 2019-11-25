@@ -7,6 +7,7 @@ java的gradle模版
 + log4j2日志
 + junit4单元测试
 + git版本标记
++ jigsaw模块支持(jdk>=9)
 
 ## License
 MIT

@@ -7,7 +7,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.config.Configuration;
 
-
 public class App {
     private final static Logger s_logger = LoggerFactory.getLogger(App.class);
 
